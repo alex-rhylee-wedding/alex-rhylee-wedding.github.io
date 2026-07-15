@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Emma &amp; Noah — Save the Date</title>
+<meta name="description" content="Save the date for Emma &amp; Noah's wedding — June 12, 2027, Charleston, South Carolina.">
+
+<!-- Google Fonts: Cormorant Garamond (display), Alex Brush (script), Jost (body) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Alex+Brush&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- Ambient scattered wildflowers, reused across the page via SVG <use> -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <g id="flower-daisy">
+      <g fill="currentColor">
+        <ellipse cx="0" cy="-9" rx="3.4" ry="6.2"/>
+        <ellipse cx="0" cy="9" rx="3.4" ry="6.2"/>
+        <ellipse cx="-9" cy="0" rx="6.2" ry="3.4"/>
+        <ellipse cx="9" cy="0" rx="6.2" ry="3.4"/>
+        <ellipse cx="-6.3" cy="-6.3" rx="3.4" ry="6.2" transform="rotate(45 -6.3 -6.3)"/>
+        <ellipse cx="6.3" cy="-6.3" rx="3.4" ry="6.2" transform="rotate(-45 6.3 -6.3)"/>
+        <ellipse cx="-6.3" cy="6.3" rx="3.4" ry="6.2" transform="rotate(-45 -6.3 6.3)"/>
+        <ellipse cx="6.3" cy="6.3" rx="3.4" ry="6.2" transform="rotate(45 6.3 6.3)"/>
+      </g>
+      <circle cx="0" cy="0" r="4.5" class="flower-center"/>
+    </g>
+    <g id="sprig-leaf">
+      <path d="M0,0 C10,-14 26,-14 34,0 C26,4 10,4 0,0 Z" fill="currentColor"/>
+    </g>
+  </defs>
+</svg>
+
+<!-- progress dots -->
+<nav class="rail" aria-label="Section navigation">
+  <a href="#intro" class="rail-dot" data-label="Intro"></a>
+  <a href="#guest" class="rail-dot" data-label="You're Invited"></a>
+  <a href="#envelope" class="rail-dot" data-label="Open It"></a>
+  <a href="#video" class="rail-dot" data-label="Watch"></a>
+  <a href="#more" class="rail-dot" data-label="More Soon"></a>
+</nav>
+
+<main>
+
+  <!-- 1. INTRO -->
+  <section id="intro" class="screen intro-screen">
+    <div class="field-scatter" aria-hidden="true">
+      <svg class="bloom bloom--rose b1" viewBox="-12 -12 24 24"><use href="#flower-daisy"/></svg>
+      <svg class="bloom bloom--gold b2" viewBox="-12 -12 24 24"><use href="#flower-daisy"/></svg>
+      <svg class="bloom bloom--sage b3" viewBox="-12 -12 24 24"><use href="#flower-daisy"/></svg>
+      <svg class="leaf leaf--1" viewBox="-4 -16 40 32"><use href="#sprig-leaf"/></svg>
+      <svg class="leaf leaf--2" viewBox="-4 -16 40 32"><use href="#sprig-leaf"/></svg>
+    </div>
+
+    <div class="intro-content">
+      <p class="eyebrow">Together with our families</p>
+      <h1 class="names"><span>Emma</span><span class="amp">&amp;</span><span>Noah</span></h1>
+      <p class="tagline">are tying the knot in a field of wildflowers</p>
+      <div class="date-plate">
+        <span class="date-day">Saturday</span>
+        <span class="date-main">June 12, 2027</span>
+        <span class="date-place">Charleston, South Carolina</span>
+      </div>
+      <button class="btn btn-scroll" data-scroll-to="guest">
+        Begin <span class="chev">&#8595;</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- 2. INPUT INFO -->
+  <section id="guest" class="screen guest-screen">
+    <div class="field-scatter" aria-hidden="true">
+      <svg class="bloom bloom--sage b4" viewBox="-12 -12 24 24"><use href="#flower-daisy"/></svg>
+      <svg class="bloom bloom--rose b5" viewBox="-12 -12 24 24"><use href="#flower-daisy"/></svg>
+    </div>
+    <div class="panel">
+      <p class="eyebrow">Before we begin</p>
+      <h2 class="section-title">Who's blooming with us today?</h2>
+      <p class="section-copy">Tell us your name and we'll address your invitation properly.</p>
+
+      <form id="guest-form" class="guest-form" autocomplete="off">
+        <label for="guest-name" class="visually-hidden">Your name</label>
+        <input id="guest-name" name="guest-name" type="text" placeholder="Your name" required>
+        <button type="submit" class="btn btn-solid">Continue</button>
+      </form>
+      <p class="hint">You can skip this — we'll just say "Dear Friend" instead.</p>
+      <button class="btn btn-text" id="skip-guest">Skip for now &rarr;</button>
+    </div>
+  </section>
+
+  <!-- 3. ENVELOPE -->
+  <section id="envelope" class="screen envelope-screen">
+    <div class="field-scatter" aria-hidden="true">
+      <svg class="bloom bloom--gold b6" viewBox="-12 -12 24 24"><use href="#flower-daisy"/></svg>
+      <svg class="bloom bloom--rose b7" viewBox="-12 -12 24 24"><use href="#flower-daisy"/></svg>
+      <svg class="bloom bloom--sage b8" viewBox="-12 -12 24 24"><use href="#flower-daisy"/></svg>
+    </div>
+
+    <p class="eyebrow" id="envelope-greeting">A little something for you</p>
+
+    <div class="envelope-wrap">
+      <button class="envelope" id="envelope-button" aria-label="Open your invitation">
+        <span class="envelope-back"></span>
+
+        <span class="envelope-letter">
+          <span class="letter-content">
+            <span class="letter-eyebrow">Save the Date</span>
+            <span class="letter-names">E &amp; N</span>
+            <span class="letter-line"></span>
+            <span class="letter-to" id="letter-to"></span>
+            <span class="letter-copy">A short film, made with love —<br>press play when you're ready.</span>
+          </span>
+        </span>
+
+        <span class="envelope-flap"></span>
+
+        <span class="envelope-seal">
+          <span class="seal-initials">E&nbsp;N</span>
+        </span>
+      </button>
+    </div>
+
+    <p class="envelope-instruction">Tap the seal to open</p>
+  </section>
+
+  <!-- 4. VIDEO -->
+  <section id="video" class="screen video-screen">
+    <div class="field-scatter" aria-hidden="true">
+      <svg class="bloom bloom--rose b9" viewBox="-12 -12 24 24"><use href="#flower-daisy"/></svg>
+      <svg class="bloom bloom--gold b10" viewBox="-12 -12 24 24"><use href="#flower-daisy"/></svg>
+    </div>
+
+    <p class="eyebrow">Our Save the Date film</p>
+    <h2 class="section-title">Press play, friend</h2>
+
+    <div class="video-frame">
+      <div class="video-frame-inner" id="video-slot">
+        <button class="video-poster" id="video-play-btn" aria-label="Play save the date video">
+          <span class="play-triangle"></span>
+        </button>
+      </div>
+    </div>
+    <p class="section-copy small">
+      Can't see the video? <a id="video-fallback-link" href="https://youtu.be/VIDEO_ID_HERE" target="_blank" rel="noopener">Watch it on YouTube instead.</a>
+    </p>
+  </section>
+
+  <!-- 5. MORE TO COME -->
+  <section id="more" class="screen more-screen">
+    <div class="field-scatter" aria-hidden="true">
+      <svg class="bloom bloom--sage b11" viewBox="-12 -12 24 24"><use href="#flower-daisy"/></svg>
+      <svg class="bloom bloom--rose b12" viewBox="-12 -12 24 24"><use href="#flower-daisy"/></svg>
+      <svg class="bloom bloom--gold b13" viewBox="-12 -12 24 24"><use href="#flower-daisy"/></svg>
+      <svg class="leaf leaf--3" viewBox="-4 -16 40 32"><use href="#sprig-leaf"/></svg>
+    </div>
+
+    <p class="eyebrow">Still growing</p>
+    <h2 class="section-title">The details are still blooming</h2>
+    <p class="section-copy">
+      Our full wedding website — with travel info, the schedule, registry, and RSVP —
+      is on its way. We'll send the link as soon as it's ready.
+    </p>
+    <div class="more-plate">
+      <span>Mark the date</span>
+      <strong>06 &middot; 12 &middot; 2027</strong>
+    </div>
+    <p class="signoff">With love,<br><span class="signoff-names">Emma &amp; Noah</span></p>
+  </section>
+
+</main>
+
+<script src="js/script.js"></script>
+</body>
+</html>
