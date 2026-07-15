@@ -2,7 +2,7 @@
 // CONFIG — edit these two lines to personalize the site
 // =========================================================
 const YOUTUBE_VIDEO_ID = "VIDEO_ID_HERE"; // <-- replace with your real YouTube video ID
-const COUPLE_NAMES = "Emma & Noah";
+const COUPLE_NAMES = "Alex & Rhylee";
 
 // =========================================================
 // Smooth-scroll "Begin" button
