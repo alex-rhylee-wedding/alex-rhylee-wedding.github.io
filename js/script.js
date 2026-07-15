@@ -1,7 +1,7 @@
 // =========================================================
 // CONFIG — edit these two lines to personalize the site
 // =========================================================
-const YOUTUBE_VIDEO_ID = "VIDEO_ID_HERE"; // <-- replace with your real YouTube video ID
+const YOUTUBE_VIDEO_ID = "c03SZa1nvb8"; // <-- replace with your real YouTube video ID
 const COUPLE_NAMES = "Alex & Rhylee";
 
 // =========================================================
@@ -79,13 +79,13 @@ const videoSlot = document.getElementById("video-slot");
 const videoFallbackLink = document.getElementById("video-fallback-link");
 
 if (videoFallbackLink) {
-  videoFallbackLink.href = `https://youtu.be/${YOUTUBE_VIDEO_ID}`;
+  videoFallbackLink.href = `https://youtu.be/shorts/${YOUTUBE_VIDEO_ID}`;
 }
 
 if (videoPlayBtn) {
   videoPlayBtn.addEventListener("click", () => {
     const iframe = document.createElement("iframe");
-    iframe.src = `https://www.youtube.com/embed/${YOUTUBE_VIDEO_ID}?autoplay=1&rel=0`;
+    iframe.src = `https://www.youtube.com/embed/shorts/${YOUTUBE_VIDEO_ID}?autoplay=1&rel=0`;
     iframe.title = `${COUPLE_NAMES} — Save the Date`;
     iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
     iframe.allowFullscreen = true;
