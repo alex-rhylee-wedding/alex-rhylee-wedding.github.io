@@ -79,7 +79,7 @@ const videoSlot = document.getElementById("video-slot");
 const videoFallbackLink = document.getElementById("video-fallback-link");
 
 if (videoFallbackLink) {
-  videoFallbackLink.href = `https://youtu.be/shorts/${YOUTUBE_VIDEO_ID}`;
+  videoFallbackLink.href = `https://youtube.com/shorts/${YOUTUBE_VIDEO_ID}`;
 }
 
 if (videoPlayBtn) {
