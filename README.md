@@ -1,4 +1,4 @@
-# Emma & Noah — Save the Date site
+# Alex & Rhylee — Save the Date site
 
 A single-page save-the-date site: intro → guest name → click-to-open envelope →
 save-the-date video → "more info to come." Pure HTML/CSS/JS, no build step —
