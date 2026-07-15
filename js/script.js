@@ -88,6 +88,7 @@ if (videoPlayBtn) {
     iframe.src = `https://www.youtube.com/embed/shorts/${YOUTUBE_VIDEO_ID}?autoplay=1&rel=0`;
     iframe.title = `${COUPLE_NAMES} — Save the Date`;
     iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+    iframe.referrerPolicy = "strict-origin-when-cross-origin";
     iframe.allowFullscreen = true;
     videoSlot.innerHTML = "";
     videoSlot.appendChild(iframe);
