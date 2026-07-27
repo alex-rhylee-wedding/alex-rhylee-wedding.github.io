@@ -1,99 +1,104 @@
 // =========================================================
-// CONFIG — edit these two lines to personalize the site
+// CONFIG — edit these to personalize the site
 // =========================================================
-const YOUTUBE_VIDEO_ID = "c03SZa1nvb8"; // <-- replace with your real YouTube video ID
-const COUPLE_NAMES = "Alex & Rhylee";
+const YOUTUBE_VIDEO_ID = "c03SZa1nvb8";
+const COUPLE_NAMES = "Rhylee & Alex";
 
-// =========================================================
-// Smooth-scroll "Begin" button
-// =========================================================
-document.querySelectorAll("[data-scroll-to]").forEach((btn) => {
-  btn.addEventListener("click", () => {
-    const target = document.getElementById(btn.dataset.scrollTo);
-    if (target) target.scrollIntoView({ behavior: "smooth" });
-  });
-});
+// Formspree (or any form-backend) endpoint. Leave blank until you've
+// set one up — see the README for a 2-minute Formspree walkthrough.
+// Example once set up: "https://formspree.io/f/abcdwxyz"
+const FORM_ENDPOINT = "";
 
 // =========================================================
-// Guest name capture -> personalize the envelope + letter
+// Screen 1 -> 2: info form submit / "already submitted"
 // =========================================================
-let guestName = "";
+const infoScreen = document.getElementById("info");
+const infoForm = document.getElementById("info-form");
+const alreadySubmittedBtn = document.getElementById("already-submitted");
 
-function applyGuestName(name) {
-  guestName = (name || "").trim();
-  const greetingEl = document.getElementById("envelope-greeting");
-  const letterToEl = document.getElementById("letter-to");
-
-  if (guestName) {
-    greetingEl.textContent = `A little something for you, ${guestName}`;
-    letterToEl.textContent = `Dear ${guestName},`;
-  } else {
-    greetingEl.textContent = "A little something for you";
-    letterToEl.textContent = "Dear Friend,";
-  }
-}
-
-const guestForm = document.getElementById("guest-form");
-const guestInput = document.getElementById("guest-name");
-const skipGuestBtn = document.getElementById("skip-guest");
-
-guestForm.addEventListener("submit", (e) => {
-  e.preventDefault();
-  applyGuestName(guestInput.value);
-  document.getElementById("envelope").scrollIntoView({ behavior: "smooth" });
-});
-
-skipGuestBtn.addEventListener("click", () => {
-  applyGuestName("");
-  document.getElementById("envelope").scrollIntoView({ behavior: "smooth" });
-});
-
-// Set a sensible default in case guest scrolls past without submitting
-applyGuestName("");
-
-// =========================================================
-// Envelope open interaction
-// =========================================================
-const envelopeBtn = document.getElementById("envelope-button");
-const envelopeInstruction = document.querySelector(".envelope-instruction");
-
-envelopeBtn.addEventListener("click", () => {
-  if (envelopeBtn.classList.contains("is-open")) return;
-  envelopeBtn.classList.add("is-open");
-  if (envelopeInstruction) {
-    envelopeInstruction.textContent = "Scroll down when you're ready to watch";
-  }
-  // Give the open animation a moment, then nudge to the video section
+function collapseInfoAndAdvance() {
+  infoScreen.classList.add("is-collapsing");
   setTimeout(() => {
     document.getElementById("video").scrollIntoView({ behavior: "smooth" });
-  }, 1400);
+    loadAndPlayVideo();
+  }, 550);
+}
+
+infoForm.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const submitBtn = infoForm.querySelector('button[type="submit"]');
+  submitBtn.disabled = true;
+  submitBtn.textContent = "Submitting…";
+
+  if (FORM_ENDPOINT) {
+    try {
+      await fetch(FORM_ENDPOINT, {
+        method: "POST",
+        headers: { Accept: "application/json" },
+        body: new FormData(infoForm),
+      });
+    } catch (err) {
+      console.error("Form submission failed:", err);
+      // We still advance the guest even if the network request fails,
+      // so a connectivity hiccup doesn't strand them on this screen.
+    }
+  }
+
+  collapseInfoAndAdvance();
+});
+
+alreadySubmittedBtn.addEventListener("click", () => {
+  collapseInfoAndAdvance();
 });
 
 // =========================================================
-// Video: lazy-load the YouTube iframe only once the guest
-// chooses to play it (keeps the page light + avoids
-// autoplay-with-sound restrictions)
+// Screen 2: load + autoplay the YouTube Short once we arrive
 // =========================================================
-const videoPlayBtn = document.getElementById("video-play-btn");
 const videoSlot = document.getElementById("video-slot");
 const videoFallbackLink = document.getElementById("video-fallback-link");
+let videoLoaded = false;
 
 if (videoFallbackLink) {
   videoFallbackLink.href = `https://youtube.com/shorts/${YOUTUBE_VIDEO_ID}`;
 }
 
-if (videoPlayBtn) {
-  videoPlayBtn.addEventListener("click", () => {
-    const iframe = document.createElement("iframe");
-    iframe.src = `https://www.youtube.com/embed/shorts/${YOUTUBE_VIDEO_ID}?autoplay=1&rel=0`;
-    iframe.title = `${COUPLE_NAMES} — Save the Date`;
-    iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
-    iframe.referrerPolicy = "strict-origin-when-cross-origin";
-    iframe.allowFullscreen = true;
-    videoSlot.innerHTML = "";
-    videoSlot.appendChild(iframe);
-  });
+function loadAndPlayVideo() {
+  if (videoLoaded) return;
+  videoLoaded = true;
+  const iframe = document.createElement("iframe");
+  iframe.src = `https://www.youtube.com/embed/${YOUTUBE_VIDEO_ID}?autoplay=1&mute=1&playsinline=1&rel=0`;
+  iframe.title = `${COUPLE_NAMES} — Save the Date`;
+  iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+  iframe.referrerPolicy = "strict-origin-when-cross-origin";
+  iframe.allowFullscreen = true;
+  videoSlot.innerHTML = "";
+  videoSlot.appendChild(iframe);
 }
+
+// Also auto-load if the guest scrolls to the video section on their own
+const videoObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) loadAndPlayVideo();
+    });
+  },
+  { threshold: 0.4 }
+);
+videoObserver.observe(document.getElementById("video"));
+
+// =========================================================
+// Screen 3: click anywhere to open the four-flap envelope
+// =========================================================
+const revealScreen = document.getElementById("reveal");
+const envelopeReveal = document.getElementById("envelope-reveal");
+const revealInstruction = document.getElementById("reveal-instruction");
+
+revealScreen.addEventListener("click", () => {
+  if (envelopeReveal.classList.contains("is-open")) return;
+  envelopeReveal.classList.add("is-open");
+  revealScreen.classList.add("is-open");
+  revealInstruction.classList.add("is-hidden");
+});
 
 // =========================================================
 // Side rail nav: highlight the section in view + click to jump
@@ -110,7 +115,7 @@ railDots.forEach((dot) => {
   });
 });
 
-const observer = new IntersectionObserver(
+const railObserver = new IntersectionObserver(
   (entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
@@ -123,5 +128,4 @@ const observer = new IntersectionObserver(
   },
   { threshold: 0.5 }
 );
-
-screens.forEach((screen) => observer.observe(screen));
+screens.forEach((screen) => railObserver.observe(screen));
