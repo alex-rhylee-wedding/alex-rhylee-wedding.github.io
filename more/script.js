@@ -3,7 +3,7 @@
 // Format: "YYYY-MM-DDTHH:MM:SS" in 24-hour time, guests'
 // local timezone is used automatically for the countdown.
 // =========================================================
-const WEDDING_DATE_ISO = "2027-06-12T16:00:00";
+const WEDDING_DATE_ISO = "2027-08-14T14:00:00";
 
 const dateLabelEl = document.getElementById("countdown-date-label");
 if (dateLabelEl) {
