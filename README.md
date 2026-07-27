@@ -1,96 +1,77 @@
-# Alex & Rhylee — Save the Date site
+# Rhylee & Alex — Save the Date site
 
-A single-page save-the-date site: intro → guest name → click-to-open envelope →
-save-the-date video → "more info to come." Pure HTML/CSS/JS, no build step —
-works directly on GitHub Pages' free hosting.
+Three screens: info form → auto-playing Short → click-anywhere four-flap
+envelope reveal. Pure HTML/CSS/JS, no build step — works directly on
+GitHub Pages.
 
 ## Files
-
 ```
 save-the-date/
-├── index.html      the whole page (5 sections)
-├── css/style.css   all styling (wildflower palette, envelope animation)
-├── js/script.js    guest name capture, envelope open, video lazy-load
-└── README.md       this file
+├── index.html
+├── css/style.css
+├── js/script.js
+└── README.md
 ```
 
-## 1. Personalize it — the only 2 things you must change
+## Important: connect the form so you actually receive submissions
 
-Open `js/script.js`, lines 1–4:
+GitHub Pages only serves files — it has no server to receive form data.
+Right now the "Submit" button plays the animation but the name/phone/
+email/address typed in **go nowhere** until you connect a free form
+backend. Recommended: **Formspree** (free, no code, 2 minutes).
 
+1. Go to [formspree.io](https://formspree.io) and create a free account.
+2. Click **New Form**, name it anything (e.g. "Save the Date"), and create it.
+3. Formspree gives you an endpoint like `https://formspree.io/f/abcdwxyz`
+   — copy it.
+4. Open `js/script.js` and paste it into this line near the top:
+   ```js
+   const FORM_ENDPOINT = "https://formspree.io/f/abcdwxyz";
+   ```
+5. Commit the change. From then on, every submission emails you (and
+   shows up in your Formspree dashboard) automatically.
+
+Until you do this, the site still works and looks correct — submissions
+just aren't saved anywhere, so don't skip this step.
+
+## Personalizing
+
+In `js/script.js`:
 ```js
-const YOUTUBE_VIDEO_ID = "VIDEO_ID_HERE"; // <-- put your real video ID here
-const COUPLE_NAMES = "Emma & Noah";
+const YOUTUBE_VIDEO_ID = "c03SZa1nvb8";
+const COUPLE_NAMES = "Rhylee & Alex";
 ```
 
-**Finding your YouTube video ID:** in a URL like
-`https://www.youtube.com/watch?v=aBcD3fGhIjK`, the ID is the part after `v=`
-— here, `aBcD3fGhIjK`. Paste just that part in, keeping the quotes.
+In `index.html`, the save-the-date blurb text lives inside
+`<div class="reveal-content">` near the bottom — edit the
+`<p class="reveal-blurb">` text to your own wording.
 
-Then replace every other appearance of "Emma", "Noah", "Emma & Noah",
-"June 12, 2027", and "Charleston, South Carolina" in `index.html` with your
-real names, date, and location. They currently appear in:
-- `<title>` tag and meta description (top of file)
-- The `intro` section (`<h1 class="names">`, `.date-plate`)
-- The envelope seal initials (`.seal-initials`) — currently "E N"
-- The `more` section sign-off
+## Preview locally
+Double-click `index.html` — no server needed. (The video needs internet;
+everything else works offline.)
 
-Use your editor's find-and-replace (Ctrl/Cmd+F) — every instance is plain text.
+## Publish on GitHub Pages
+1. Create a repo named exactly `yourusername.github.io`.
+2. Upload `index.html`, `css/`, and `js/` (Add file → Upload files → drag
+   all three in, keeping folder structure).
+3. Commit changes.
+4. Settings → Pages → source: Deploy from a branch → branch `main`,
+   folder `/ (root)` → Save.
+5. Visit `https://yourusername.github.io` after a minute or two.
 
-## 2. Preview it locally
+## How each screen works
 
-Just double-click `index.html` to open it in your browser — no server needed.
-(The envelope, guest form, and video button all work offline; only the actual
-YouTube video needs internet.)
+- **Screen 1 (info form)** — name, phone, email, address, plus an
+  "I've already submitted my info" button that skips straight to the
+  video without submitting. On submit, the panel collapses with a
+  smooth fade/scale-down, then the page scrolls to the video.
+- **Screen 2 (video)** — the Short loads and autoplays (muted, per
+  browser autoplay rules — guests can unmute with the player's speaker
+  icon) as soon as it scrolls into view. A plain-text fallback link
+  sits underneath.
+- **Screen 3 (envelope reveal)** — tapping anywhere on the screen
+  triggers all four triangular flaps to fold outward in a staggered
+  3D animation, revealing the save-the-date blurb in the center.
 
-## 3. Put it on GitHub Pages
-
-1. Create a new repository on GitHub named exactly `yourusername.github.io`
-   (replace `yourusername` with your actual GitHub username). This exact name
-   is what makes GitHub serve it as a website automatically.
-2. On the repository page, click **Add file → Upload files**.
-3. Drag in `index.html`, the `css` folder, and the `js` folder (keep the
-   folder structure intact — GitHub preserves it).
-4. Scroll down and click **Commit changes**.
-5. Go to the repo's **Settings → Pages** tab. Under "Build and deployment,"
-   confirm the source is "Deploy from a branch," branch `main`, folder `/root`.
-   Save if you changed anything.
-6. Wait 1–2 minutes, then visit `https://yourusername.github.io` — your site
-   is live.
-
-Any time you want to update text, images, or the video, just edit the file
-on GitHub directly (pencil icon on the file page) or re-upload it — changes
-go live within a minute or two.
-
-## 4. What's already built
-
-- **Intro** — names, tagline, the date and place.
-- **Guest info** — a name field that personalizes the envelope's greeting
-  ("Dear [Name]"), with a skip option that falls back to "Dear Friend."
-- **Envelope** — a hand-built CSS envelope with a wax seal. Tapping it plays
-  a flap-opening animation and reveals a small note card, then nudges the
-  guest down to the video.
-- **Video** — a poster/play button first (keeps the page fast and avoids
-  autoplay-with-sound issues), and only loads the real YouTube embed once
-  tapped. A plain-text fallback link is included too.
-- **More info to come** — a soft closing section you can expand later with
-  your full wedding site, RSVP, registry, etc.
-
-## 5. Extending it later
-
-Since you mentioned more will be added: the simplest path is to keep this
-exact file structure and add new `<section class="screen">` blocks to
-`index.html` between `#more` and `</main>`, matching the existing pattern
-(each screen is `min-height: 100vh`, has its own `id`, and can reuse the
-`.eyebrow` / `.section-title` / `.section-copy` classes already styled in
-`css/style.css`). Add a matching `.rail-dot` link in the `<nav class="rail">`
-at the top so the side navigation stays in sync.
-
-## Notes on accessibility & performance
-
-- Respects `prefers-reduced-motion` (swaying flowers and the pulse ring turn
-  off automatically for guests who've asked for less motion).
-- All interactive elements are real `<button>`/`<a>`/`<input>` tags and are
-  keyboard-reachable with a visible focus ring.
-- The video iframe isn't loaded until the guest presses play, so the page
-  stays fast on mobile data.
+Respects `prefers-reduced-motion`; all interactive elements are real
+buttons/links/inputs and keyboard-reachable.
