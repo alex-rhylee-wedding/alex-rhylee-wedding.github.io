@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rhylee &amp; Alex — Save the Date</title>
+<meta name="description" content="Save the date for Rhylee &amp; Alex's wedding.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Alex+Brush&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body class="pre-video">
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <g id="flower-daisy">
+      <g fill="currentColor">
+        <ellipse cx="0" cy="-9" rx="3.4" ry="6.2"/>
+        <ellipse cx="0" cy="9" rx="3.4" ry="6.2"/>
+        <ellipse cx="-9" cy="0" rx="6.2" ry="3.4"/>
+        <ellipse cx="9" cy="0" rx="6.2" ry="3.4"/>
+        <ellipse cx="-6.3" cy="-6.3" rx="3.4" ry="6.2" transform="rotate(45 -6.3 -6.3)"/>
+        <ellipse cx="6.3" cy="-6.3" rx="3.4" ry="6.2" transform="rotate(-45 6.3 -6.3)"/>
+        <ellipse cx="-6.3" cy="6.3" rx="3.4" ry="6.2" transform="rotate(-45 -6.3 6.3)"/>
+        <ellipse cx="6.3" cy="6.3" rx="3.4" ry="6.2" transform="rotate(45 6.3 6.3)"/>
+      </g>
+      <circle cx="0" cy="0" r="4.5" class="flower-center"/>
+    </g>
+  </defs>
+</svg>
+
+<nav class="rail" aria-label="Section navigation">
+  <a href="#info" class="rail-dot" data-label="Your Info"></a>
+  <a href="#video" class="rail-dot" data-label="Watch"></a>
+  <a href="#reveal" class="rail-dot" data-label="Save the Date"></a>
+</nav>
+
+<main>
+
+  <!-- 1. INFO FORM -->
+  <section id="info" class="screen info-screen">
+    <div class="field-scatter" aria-hidden="true">
+      <svg class="bloom bloom--rose b1" viewBox="-12 -12 24 24"><use href="#flower-daisy"/></svg>
+      <svg class="bloom bloom--gold b2" viewBox="-12 -12 24 24"><use href="#flower-daisy"/></svg>
+      <svg class="bloom bloom--sage b3" viewBox="-12 -12 24 24"><use href="#flower-daisy"/></svg>
+    </div>
+
+    <div class="panel" id="info-panel">
+      <p class="eyebrow">Together with our families</p>
+      <h1 class="names names--small"><span>Rhylee</span><span class="amp">&amp;</span><span>Alex</span></h1>
+      <h2 class="section-title">Let's get your details</h2>
+      <p class="section-copy">Share your contact info so we can keep you posted as the big day gets closer.</p>
+
+      <form id="info-form" class="info-form" autocomplete="off">
+        <label for="f-name" class="visually-hidden">Full name</label>
+        <input id="f-name" name="name" type="text" placeholder="Full name" required>
+
+        <label for="f-phone" class="visually-hidden">Phone number</label>
+        <input id="f-phone" name="phone" type="tel" placeholder="Phone number" required>
+
+        <label for="f-email" class="visually-hidden">Email address</label>
+        <input id="f-email" name="email" type="email" placeholder="Email address" required>
+
+        <label for="f-address" class="visually-hidden">Mailing address</label>
+        <input id="f-address" name="address" type="text" placeholder="Mailing address" required>
+
+        <button type="submit" class="btn btn-solid">Submit</button>
+      </form>
+
+      <button class="btn btn-text" id="already-submitted">I've already submitted my info</button>
+    </div>
+  </section>
+
+  <!-- 2. VIDEO -->
+  <section id="video" class="screen video-screen">
+    <div class="field-scatter" aria-hidden="true">
+      <svg class="bloom bloom--rose b9" viewBox="-12 -12 24 24"><use href="#flower-daisy"/></svg>
+      <svg class="bloom bloom--gold b10" viewBox="-12 -12 24 24"><use href="#flower-daisy"/></svg>
+    </div>
+
+    <p class="eyebrow">Our Save the Date film</p>
+
+    <div class="video-frame">
+      <div class="video-frame-inner" id="video-slot"></div>
+    </div>
+    <p class="section-copy small">
+      Can't see the video? <a id="video-fallback-link" href="https://youtube.com/shorts/c03SZa1nvb8" target="_blank" rel="noopener">Watch it on YouTube instead.</a>
+    </p>
+  </section>
+
+  <!-- 3. ENVELOPE REVEAL -->
+  <section id="reveal" class="screen reveal-screen">
+    <div class="field-scatter" aria-hidden="true">
+      <svg class="bloom bloom--sage b11" viewBox="-12 -12 24 24"><use href="#flower-daisy"/></svg>
+      <svg class="bloom bloom--rose b12" viewBox="-12 -12 24 24"><use href="#flower-daisy"/></svg>
+      <svg class="bloom bloom--gold b13" viewBox="-12 -12 24 24"><use href="#flower-daisy"/></svg>
+    </div>
+
+    <p class="eyebrow" id="reveal-instruction">Tap anywhere to open</p>
+
+    <div class="envelope-stack">
+      <div class="envelope-reveal" id="envelope-reveal">
+        <span class="flap flap-top"></span>
+        <span class="flap flap-right"></span>
+        <span class="flap flap-bottom"></span>
+        <span class="flap flap-left"></span>
+        <div class="reveal-content">
+          <span class="reveal-eyebrow">Save the Date</span>
+          <span class="reveal-names">Rhylee &amp; Alex</span>
+          <span class="reveal-line"></span>
+          <p class="reveal-blurb">
+            We're getting married! Formal invitation with all the details
+            to follow — for now, just save the date and start dreaming
+            about your outfit.
+          </p>
+        </div>
+      </div>
+      <a href="more/index.html" class="continue-link" id="continue-link">Please continue to the next page &rarr;</a>
+    </div>
+  </section>
+
+</main>
+
+<script src="js/script.js"></script>
+</body>
+</html>
