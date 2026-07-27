@@ -17,6 +17,7 @@ const infoForm = document.getElementById("info-form");
 const alreadySubmittedBtn = document.getElementById("already-submitted");
 
 function collapseInfoAndAdvance() {
+  document.body.classList.remove("pre-video");
   infoScreen.classList.add("is-collapsing");
   setTimeout(() => {
     document.getElementById("video").scrollIntoView({ behavior: "smooth" });
