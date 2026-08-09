@@ -386,22 +386,39 @@ body.pre-video .rail-dot[href="#reveal"] {
   opacity: 0;
 }
 
-.reveal-content {
+/* the card that slides up out of the envelope and rests on top */
+.envelope-card {
   position: absolute;
-  inset: 12%;
+  left: 7%;
+  right: 7%;
+  top: 56%;
+  bottom: 6%;
+  background: var(--paper);
+  border: 1px solid rgba(59,54,46,0.16);
+  border-radius: 4px;
+  box-shadow: 0 16px 30px -18px rgba(59, 54, 46, 0.3);
   z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.1rem 1rem;
+  transform: translateY(2%);
+  transition: transform 1s cubic-bezier(.25,.85,.3,1.1) 0.35s,
+              box-shadow 1s ease 0.35s;
+}
+.envelope-reveal.is-open .envelope-card {
+  transform: translateY(-44%) rotate(-1.5deg);
+  box-shadow: 0 34px 60px -22px rgba(59, 54, 46, 0.45);
+  z-index: 5;
+}
+
+.reveal-content {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0.6rem;
-  opacity: 0;
-  transform: scale(0.8);
-  transition: opacity 0.8s ease 0.45s, transform 0.8s ease 0.45s;
-}
-.envelope-reveal.is-open .reveal-content {
-  opacity: 1;
-  transform: scale(1);
+  gap: 0.5rem;
+  text-align: center;
 }
 
 .reveal-eyebrow {
@@ -412,14 +429,14 @@ body.pre-video .rail-dot[href="#reveal"] {
 }
 .reveal-names {
   font-family: var(--font-script);
-  font-size: clamp(1.8rem, 6vw, 2.4rem);
+  font-size: clamp(1.6rem, 5.4vw, 2.2rem);
   color: var(--rose);
   line-height: 1;
 }
 .reveal-line { width: 2.4rem; height: 1px; background: var(--gold); margin: 0.2rem 0; }
 .reveal-blurb {
-  font-size: 0.86rem;
-  line-height: 1.6;
+  font-size: 0.84rem;
+  line-height: 1.55;
   color: var(--ink-soft);
   max-width: 22rem;
   margin: 0;
