@@ -282,7 +282,7 @@ body.pre-video .rail-dot[href="#reveal"] {
 
 .envelope-stack {
   position: relative;
-  width: min(80vw, 340px);
+  width: min(85vw, 380px);
   margin: 0 auto;
 }
 
@@ -309,54 +309,87 @@ body.pre-video .rail-dot[href="#reveal"] {
   position: relative;
   z-index: 1;
   width: 100%;
-  aspect-ratio: 1;
+  aspect-ratio: 3 / 2;
   perspective: 1400px;
   transform-style: preserve-3d;
 }
 
-.flap {
+/* static envelope body (back + sides), always visible */
+.envelope-body {
   position: absolute;
   inset: 0;
-  transition: transform 1.1s cubic-bezier(.3,.7,.3,1);
-  box-shadow: 0 0 0 1px rgba(59,54,46,0.12) inset;
-}
-.flap-top {
-  clip-path: polygon(0 0, 100% 0, 50% 50%);
-  transform-origin: top center;
   background: var(--paper);
-  z-index: 4;
-}
-.flap-right {
-  clip-path: polygon(100% 0, 100% 100%, 50% 50%);
-  transform-origin: center right;
-  background: var(--cream-deep);
-  z-index: 3;
-  transition-delay: 0.08s;
-}
-.flap-bottom {
-  clip-path: polygon(100% 100%, 0 100%, 50% 50%);
-  transform-origin: bottom center;
-  background: var(--rose-soft);
-  z-index: 2;
-  transition-delay: 0.16s;
-}
-.flap-left {
-  clip-path: polygon(0 100%, 0 0, 50% 50%);
-  transform-origin: center left;
-  background: var(--cream-deep);
+  border: 1px solid rgba(59,54,46,0.18);
+  border-radius: 3px;
+  box-shadow: 0 30px 70px -35px rgba(59, 54, 46, 0.45);
   z-index: 1;
-  transition-delay: 0.24s;
+}
+/* diagonal fold lines suggesting the envelope's side pockets */
+.envelope-body::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(135deg, transparent 49.4%, rgba(59,54,46,0.1) 50%, transparent 50.6%),
+    linear-gradient(-135deg, transparent 49.4%, rgba(59,54,46,0.1) 50%, transparent 50.6%);
+  background-size: 100% 72%, 100% 72%;
+  background-position: top left, top right;
+  background-repeat: no-repeat;
 }
 
-.envelope-reveal.is-open .flap-top    { transform: rotateX(180deg); }
-.envelope-reveal.is-open .flap-right  { transform: rotateY(-180deg); }
-.envelope-reveal.is-open .flap-bottom { transform: rotateX(-180deg); }
-.envelope-reveal.is-open .flap-left   { transform: rotateY(180deg); }
+/* the top flap — this is what folds open */
+.envelope-flap {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 62%;
+  background: var(--cream-deep);
+  border: 1px solid rgba(59,54,46,0.18);
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  transform-origin: top center;
+  transform: rotateX(0deg);
+  transition: transform 1.1s cubic-bezier(.3,.7,.3,1);
+  z-index: 3;
+  box-shadow: 0 2px 10px rgba(59,54,46,0.12);
+}
+
+/* the wax seal, sitting where the flap's tip meets the body */
+.envelope-seal {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, var(--rose) 0%, var(--rose) 55%, #8a4257 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 4;
+  box-shadow: 0 6px 14px rgba(59,54,46,0.3);
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+.seal-initials {
+  font-family: var(--font-display);
+  font-style: italic;
+  color: var(--gold-soft);
+  font-size: 1rem;
+  letter-spacing: 0.05em;
+}
+
+/* OPEN STATE */
+.envelope-reveal.is-open .envelope-flap {
+  transform: rotateX(180deg);
+}
+.envelope-reveal.is-open .envelope-seal {
+  transform: translate(-50%, -50%) scale(0);
+  opacity: 0;
+}
 
 .reveal-content {
   position: absolute;
   inset: 12%;
-  z-index: 0;
+  z-index: 2;
   display: flex;
   flex-direction: column;
   align-items: center;
