@@ -391,8 +391,7 @@ body.pre-video .rail-dot[href="#reveal"] {
   position: absolute;
   left: 7%;
   right: 7%;
-  top: 56%;
-  bottom: 6%;
+  top: 58%;
   background: var(--paper);
   border: 1px solid rgba(59,54,46,0.16);
   border-radius: 4px;
@@ -402,12 +401,17 @@ body.pre-video .rail-dot[href="#reveal"] {
   align-items: center;
   justify-content: center;
   padding: 1.1rem 1rem;
-  transform: translateY(2%);
-  transition: transform 1s cubic-bezier(.25,.85,.3,1.1) 0.35s,
+  opacity: 0;
+  transform: rotate(0deg);
+  transition: top 1s cubic-bezier(.25,.85,.3,1.1) 0.35s,
+              opacity 0.6s ease 0.35s,
+              transform 1s cubic-bezier(.25,.85,.3,1.1) 0.35s,
               box-shadow 1s ease 0.35s;
 }
 .envelope-reveal.is-open .envelope-card {
-  transform: translateY(-44%) rotate(-1.5deg);
+  top: 3%;
+  opacity: 1;
+  transform: rotate(-1.5deg);
   box-shadow: 0 34px 60px -22px rgba(59, 54, 46, 0.45);
   z-index: 5;
 }
