@@ -19,33 +19,33 @@ const alreadySubmittedBtn = document.getElementById("already-submitted");
 function collapseInfoAndAdvance() {
   document.body.classList.remove("pre-video");
   infoScreen.classList.add("is-collapsing");
+  // Load the video right now, in the same click, rather than after a
+  // delay — browsers only allow unmuted autoplay when it happens close
+  // to a real user action, so this timing matters.
+  loadAndPlayVideo();
   setTimeout(() => {
     document.getElementById("video").scrollIntoView({ behavior: "smooth" });
-    loadAndPlayVideo();
   }, 550);
 }
 
-infoForm.addEventListener("submit", async (e) => {
+infoForm.addEventListener("submit", (e) => {
   e.preventDefault();
   const submitBtn = infoForm.querySelector('button[type="submit"]');
   submitBtn.disabled = true;
   submitBtn.textContent = "Submitting…";
 
-  if (FORM_ENDPOINT) {
-    try {
-      await fetch(FORM_ENDPOINT, {
-        method: "POST",
-        headers: { Accept: "application/json" },
-        body: new FormData(infoForm),
-      });
-    } catch (err) {
-      console.error("Form submission failed:", err);
-      // We still advance the guest even if the network request fails,
-      // so a connectivity hiccup doesn't strand them on this screen.
-    }
-  }
-
+  // Advance immediately so the video load stays tied to this click.
   collapseInfoAndAdvance();
+
+  // Send the form data in the background — we don't wait on it, so a
+  // slow network never delays the guest or breaks the autoplay timing.
+  if (FORM_ENDPOINT) {
+    fetch(FORM_ENDPOINT, {
+      method: "POST",
+      headers: { Accept: "application/json" },
+      body: new FormData(infoForm),
+    }).catch((err) => console.error("Form submission failed:", err));
+  }
 });
 
 alreadySubmittedBtn.addEventListener("click", () => {
@@ -67,7 +67,7 @@ function loadAndPlayVideo() {
   if (videoLoaded) return;
   videoLoaded = true;
   const iframe = document.createElement("iframe");
-  iframe.src = `https://www.youtube.com/embed/${YOUTUBE_VIDEO_ID}?autoplay=1&mute=1&playsinline=1&rel=0`;
+  iframe.src = `https://www.youtube.com/embed/${YOUTUBE_VIDEO_ID}?autoplay=1&playsinline=1&rel=0`;
   iframe.title = `${COUPLE_NAMES} — Save the Date`;
   iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
   iframe.referrerPolicy = "strict-origin-when-cross-origin";
