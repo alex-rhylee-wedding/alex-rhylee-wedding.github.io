@@ -386,12 +386,20 @@ body.pre-video .rail-dot[href="#reveal"] {
   opacity: 0;
 }
 
-/* the card that slides up out of the envelope and rests on top */
+/* the card that rises fully out of the envelope, then settles back
+   down to rest on top of it, straight (no tilt) */
+@keyframes card-rise {
+  0%   { top: 62%; opacity: 0; transform: scale(0.85); }
+  18%  { opacity: 1; }
+  55%  { top: -12%; transform: scale(1.03); }
+  100% { top: 2%; opacity: 1; transform: scale(1); }
+}
+
 .envelope-card {
   position: absolute;
-  left: 7%;
-  right: 7%;
-  top: 58%;
+  left: 4%;
+  right: 4%;
+  top: 62%;
   background: var(--paper);
   border: 1px solid rgba(59,54,46,0.16);
   border-radius: 4px;
@@ -400,18 +408,12 @@ body.pre-video .rail-dot[href="#reveal"] {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1.1rem 1rem;
+  padding: 1.7rem 1.4rem;
   opacity: 0;
-  transform: rotate(0deg);
-  transition: top 1s cubic-bezier(.25,.85,.3,1.1) 0.35s,
-              opacity 0.6s ease 0.35s,
-              transform 1s cubic-bezier(.25,.85,.3,1.1) 0.35s,
-              box-shadow 1s ease 0.35s;
+  transform: scale(0.85);
 }
 .envelope-reveal.is-open .envelope-card {
-  top: 3%;
-  opacity: 1;
-  transform: rotate(-1.5deg);
+  animation: card-rise 1.3s cubic-bezier(.3,.65,.3,1) 0.35s forwards;
   box-shadow: 0 34px 60px -22px rgba(59, 54, 46, 0.45);
   z-index: 5;
 }
@@ -426,23 +428,23 @@ body.pre-video .rail-dot[href="#reveal"] {
 }
 
 .reveal-eyebrow {
-  font-size: 0.62rem;
+  font-size: 0.66rem;
   letter-spacing: 0.24em;
   text-transform: uppercase;
   color: var(--sage-deep);
 }
 .reveal-names {
   font-family: var(--font-script);
-  font-size: clamp(1.6rem, 5.4vw, 2.2rem);
+  font-size: clamp(1.9rem, 6.4vw, 2.6rem);
   color: var(--rose);
   line-height: 1;
 }
-.reveal-line { width: 2.4rem; height: 1px; background: var(--gold); margin: 0.2rem 0; }
+.reveal-line { width: 2.6rem; height: 1px; background: var(--gold); margin: 0.25rem 0; }
 .reveal-blurb {
-  font-size: 0.84rem;
-  line-height: 1.55;
+  font-size: 0.92rem;
+  line-height: 1.6;
   color: var(--ink-soft);
-  max-width: 22rem;
+  max-width: 24rem;
   margin: 0;
 }
 
