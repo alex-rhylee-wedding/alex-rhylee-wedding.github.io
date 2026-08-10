@@ -120,32 +120,6 @@ body.pre-video .rail-dot[href="#reveal"] {
 .section-copy.small { font-size: 0.85rem; margin-top: 1.4rem; }
 
 /* ============================================
-   FLORAL SCATTER (ambient, decorative)
-   ============================================ */
-.field-scatter { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
-
-.bloom {
-  position: absolute;
-  width: 34px; height: 34px;
-  animation: sway 7s ease-in-out infinite;
-  opacity: 0.85;
-}
-.bloom--rose { color: var(--rose-soft); }
-.bloom--sage { color: var(--sage); }
-.bloom--gold { color: var(--gold-soft); }
-.bloom--lavender { color: var(--lavender); }
-.bloom--scarlet { color: var(--scarlet); }
-.bloom--blush { color: var(--blush); }
-.bloom--amber { color: var(--amber); }
-.flower-center { fill: var(--gold); opacity: 0.9; }
-
-@keyframes sway {
-  0%, 100% { transform: translateY(0) rotate(var(--rot, 0deg)); }
-  50%      { transform: translateY(-10px) rotate(calc(var(--rot, 0deg) + 4deg)); }
-}
-@media (prefers-reduced-motion: reduce) { .bloom { animation: none; } }
-
-/* ============================================
    ROOT (color tokens continued — extra muted
    tints for the wider wildflower mix, kept
    within the same dusty/soft palette)
