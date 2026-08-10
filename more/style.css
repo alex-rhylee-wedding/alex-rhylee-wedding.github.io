@@ -75,7 +75,7 @@
 /* ---- Sign-off (More to Come screen) ---- */
 .signoff {
   font-size: 1.15rem;
-  color: #fff;
+  color: var(--ink);
   line-height: 1.8;
   position: relative;
   z-index: 1;
@@ -84,7 +84,7 @@
 .signoff-names {
   font-family: var(--font-script);
   font-size: 1.6rem;
-  color: var(--rose);
+  color: var(--ink);
 }
 
 /* ---- White, larger text over the photo background ---- */
