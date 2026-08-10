@@ -268,28 +268,34 @@ body.pre-video .rail-dot[href="#reveal"] {
    2. VIDEO
    ============================================ */
 .video-frame-wrap {
-  width: min(84vw, 400px);
-  aspect-ratio: 668 / 898;
   position: relative;
-  z-index: 1;
-  background: url('img/floral-frame.jpg') center / 100% 100% no-repeat;
-  filter: drop-shadow(0 30px 50px rgba(59, 54, 46, 0.35));
-}
-.video-frame {
-  position: absolute;
-  top: 9%;
-  left: 24%;
-  width: 52%;
+  width: min(86vw, 400px);
   aspect-ratio: 9 / 16;
   z-index: 1;
-  border-radius: 4px;
+}
+.video-frame {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  border-radius: 6px;
   overflow: hidden;
-  box-shadow: 0 14px 28px -14px rgba(59, 54, 46, 0.5);
-  border: 4px solid var(--paper);
+  box-shadow: 0 40px 80px -40px rgba(59, 54, 46, 0.5);
+  border: 6px solid var(--paper);
   outline: 1px solid rgba(59,54,46,0.15);
 }
 .video-frame-inner { position: absolute; inset: 0; background: var(--ink); }
 .video-frame-inner iframe { width: 100%; height: 100%; border: 0; display: block; }
+.video-frame-deco {
+  position: absolute;
+  top: 0;
+  left: -13%;
+  width: 123%;
+  height: 100%;
+  background: url('img/gold-corner-frame.png') center / 100% 100% no-repeat;
+  pointer-events: none;
+  z-index: 2;
+}
 
 /* ============================================
    3. ENVELOPE REVEAL (four-flap open)
