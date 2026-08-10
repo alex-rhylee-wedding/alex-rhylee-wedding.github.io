@@ -21,82 +21,12 @@
 </head>
 <body>
 
-<svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <defs>
-    <g id="flower-daisy">
-      <g fill="currentColor">
-        <ellipse cx="0" cy="-9" rx="3.4" ry="6.2"/>
-        <ellipse cx="0" cy="9" rx="3.4" ry="6.2"/>
-        <ellipse cx="-9" cy="0" rx="6.2" ry="3.4"/>
-        <ellipse cx="9" cy="0" rx="6.2" ry="3.4"/>
-        <ellipse cx="-6.3" cy="-6.3" rx="3.4" ry="6.2" transform="rotate(45 -6.3 -6.3)"/>
-        <ellipse cx="6.3" cy="-6.3" rx="3.4" ry="6.2" transform="rotate(-45 6.3 -6.3)"/>
-        <ellipse cx="-6.3" cy="6.3" rx="3.4" ry="6.2" transform="rotate(-45 -6.3 6.3)"/>
-        <ellipse cx="6.3" cy="6.3" rx="3.4" ry="6.2" transform="rotate(45 6.3 6.3)"/>
-      </g>
-      <circle cx="0" cy="0" r="4.5" class="flower-center"/>
-    </g>
-    <g id="flower-star">
-      <g fill="currentColor">
-        <path d="M0,-3 L2.6,-10 L0,-15 L-2.6,-10 Z"/>
-        <path d="M0,3 L2.6,10 L0,15 L-2.6,10 Z"/>
-        <path d="M-3,0 L-10,2.6 L-15,0 L-10,-2.6 Z"/>
-        <path d="M3,0 L10,2.6 L15,0 L10,-2.6 Z"/>
-        <path d="M-2.1,-2.1 L-7.4,-9.4 L-10.8,-10.8 L-9.4,-7.4 Z"/>
-        <path d="M2.1,-2.1 L7.4,-9.4 L10.8,-10.8 L9.4,-7.4 Z"/>
-        <path d="M-2.1,2.1 L-7.4,9.4 L-10.8,10.8 L-9.4,7.4 Z"/>
-        <path d="M2.1,2.1 L7.4,9.4 L10.8,10.8 L9.4,7.4 Z"/>
-      </g>
-      <circle cx="0" cy="0" r="3" class="flower-center"/>
-    </g>
-    <g id="flower-cluster">
-      <g fill="currentColor">
-        <circle cx="0" cy="0" r="3.2"/>
-        <circle cx="0" cy="-6" r="2.8"/>
-        <circle cx="5.2" cy="-3" r="2.8"/>
-        <circle cx="5.2" cy="3" r="2.8"/>
-        <circle cx="0" cy="6" r="2.8"/>
-        <circle cx="-5.2" cy="3" r="2.8"/>
-        <circle cx="-5.2" cy="-3" r="2.8"/>
-      </g>
-    </g>
-    <g id="flower-spike">
-      <line x1="0" y1="14" x2="0" y2="-14" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
-      <g fill="currentColor">
-        <ellipse cx="-2.6" cy="-11" rx="2.6" ry="3.4"/>
-        <ellipse cx="2.6" cy="-5.5" rx="2.6" ry="3.4"/>
-        <ellipse cx="-2.6" cy="0" rx="2.6" ry="3.4"/>
-        <ellipse cx="2.6" cy="5.5" rx="2.6" ry="3.4"/>
-        <ellipse cx="-2.6" cy="11" rx="2.6" ry="3.4"/>
-      </g>
-    </g>
-    <g id="flower-plume">
-      <path d="M-13,11 Q-4,-13 14,-9" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
-      <g fill="currentColor">
-        <circle cx="-11" cy="8.4" r="1.7"/>
-        <circle cx="-6.5" cy="0.5" r="1.7"/>
-        <circle cx="-1.5" cy="-7" r="1.7"/>
-        <circle cx="4.5" cy="-10.3" r="1.7"/>
-        <circle cx="10.5" cy="-9.6" r="1.7"/>
-      </g>
-    </g>
-  </defs>
-</svg>
-
 <a href="../index.html" class="back-link">&larr; Back</a>
 
 <main>
 
   <!-- COUNTDOWN -->
   <section id="countdown" class="screen countdown-screen">
-    <div class="field-scatter" aria-hidden="true">
-      <!-- Black-Eyed Susan -->
-      <svg class="bloom bloom--gold" style="top:8%;left:7%;--rot:-8deg" viewBox="-12 -12 24 24"><use href="#flower-daisy"/></svg>
-      <!-- Wild Bergamot -->
-      <svg class="bloom bloom--lavender" style="top:87%;left:89%;--rot:10deg;width:28px;height:28px" viewBox="-16 -16 32 32"><use href="#flower-star"/></svg>
-      <!-- Cardinal Flower -->
-      <svg class="bloom bloom--scarlet" style="top:12%;left:90%;--rot:6deg;width:20px;height:28px" viewBox="-16 -16 32 32"><use href="#flower-spike"/></svg>
-    </div>
     <p class="eyebrow">The countdown is on</p>
     <h1 class="names names--small"><span>Rhylee</span><span class="amp">&amp;</span><span>Alex</span></h1>
     <div class="countdown" id="countdown-timer" aria-live="polite">
@@ -110,14 +40,6 @@
 
   <!-- ENGAGEMENT PHOTO -->
   <section id="engagement" class="screen engagement-screen">
-    <div class="field-scatter" aria-hidden="true">
-      <!-- Purple Coneflower -->
-      <svg class="bloom bloom--lavender" style="top:9%;left:8%;--rot:4deg" viewBox="-12 -12 24 24"><use href="#flower-daisy"/></svg>
-      <!-- Joe-Pye Weed -->
-      <svg class="bloom bloom--rose" style="top:88%;left:90%;--rot:-6deg;width:24px;height:24px" viewBox="-9 -9 18 18"><use href="#flower-cluster"/></svg>
-      <!-- Goldenrod -->
-      <svg class="bloom bloom--gold" style="top:85%;left:6%;--rot:-4deg;width:28px;height:28px" viewBox="-16 -16 32 32"><use href="#flower-plume"/></svg>
-    </div>
     <p class="eyebrow">How it happened</p>
     <h2 class="section-title">Our Engagement</h2>
     <div class="engagement-photo-frame">
@@ -131,16 +53,6 @@
 
   <!-- MORE TO COME -->
   <section id="more-info" class="screen more-screen">
-    <div class="field-scatter" aria-hidden="true">
-      <!-- Scarlet Bee Balm -->
-      <svg class="bloom bloom--scarlet" style="top:10%;left:88%;--rot:6deg;width:24px;height:24px" viewBox="-9 -9 18 18"><use href="#flower-cluster"/></svg>
-      <!-- Ironweed -->
-      <svg class="bloom bloom--lavender" style="top:88%;left:9%;--rot:-8deg;width:26px;height:26px" viewBox="-16 -16 32 32"><use href="#flower-star"/></svg>
-      <!-- Turtlehead -->
-      <svg class="bloom bloom--blush" style="top:52%;left:4%;--rot:4deg;width:18px;height:24px" viewBox="-16 -16 32 32"><use href="#flower-spike"/></svg>
-      <!-- Swamp Sunflower -->
-      <svg class="bloom bloom--gold" style="top:8%;left:8%;--rot:-6deg" viewBox="-12 -12 24 24"><use href="#flower-daisy"/></svg>
-    </div>
     <p class="eyebrow">Still growing</p>
     <h2 class="section-title">The details are still blooming</h2>
     <p class="section-copy">
