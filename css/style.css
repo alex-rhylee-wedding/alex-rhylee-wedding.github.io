@@ -13,6 +13,10 @@
   --rose-soft:     #D9B8C0;
   --gold:          #B08D57;
   --gold-soft:     #E4D2A9;
+  --lavender:      #9C8AA5;
+  --scarlet:       #A8524A;
+  --blush:         #E3C9C2;
+  --amber:         #C98A4B;
 
   --font-display:  'Cormorant Garamond', serif;
   --font-script:   'Alex Brush', cursive;
@@ -123,6 +127,10 @@ body.pre-video .rail-dot[href="#reveal"] {
 .bloom--rose { color: var(--rose-soft); }
 .bloom--sage { color: var(--sage); }
 .bloom--gold { color: var(--gold-soft); }
+.bloom--lavender { color: var(--lavender); }
+.bloom--scarlet { color: var(--scarlet); }
+.bloom--blush { color: var(--blush); }
+.bloom--amber { color: var(--amber); }
 .flower-center { fill: var(--gold); opacity: 0.9; }
 
 @keyframes sway {
@@ -131,14 +139,11 @@ body.pre-video .rail-dot[href="#reveal"] {
 }
 @media (prefers-reduced-motion: reduce) { .bloom { animation: none; } }
 
-.b1  { top: 10%; left: 8%;  --rot: -8deg; }
-.b2  { top: 88%; left: 88%; --rot: 10deg; }
-.b3  { top: 85%; left: 10%; --rot: 4deg; width: 26px; height: 26px; }
-.b9  { top: 10%; left: 6%;  --rot: 5deg; }
-.b10 { top: 85%; left: 92%; --rot: -6deg; }
-.b11 { top: 12%; left: 90%; --rot: 6deg; }
-.b12 { top: 88%; left: 10%; --rot: -8deg; }
-.b13 { top: 50%; left: 4%;  --rot: 4deg; width: 24px; height: 24px; }
+/* ============================================
+   ROOT (color tokens continued — extra muted
+   tints for the wider wildflower mix, kept
+   within the same dusty/soft palette)
+   ============================================ */
 
 /* ============================================
    BUTTONS
