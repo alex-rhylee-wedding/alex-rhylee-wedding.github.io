@@ -89,7 +89,7 @@
 
 /* ---- White, larger text over the photo background ---- */
 .engagement-screen .section-copy {
-  color: #fff;
+  color: var(--ink);
   font-size: 1.08rem;
   text-shadow: 0 1px 4px rgba(0,0,0,0.35);
 }
