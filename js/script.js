@@ -4,10 +4,11 @@
 const YOUTUBE_VIDEO_ID = "c03SZa1nvb8";
 const COUPLE_NAMES = "Rhylee & Alex";
 
-// Formspree (or any form-backend) endpoint. Leave blank until you've
-// set one up — see the README for a 2-minute Formspree walkthrough.
-// Example once set up: "https://formspree.io/f/abcdwxyz"
-const FORM_ENDPOINT = "";
+// Google Apps Script Web App URL that appends each submission as a row
+// in a Google Sheet. Leave blank until you've deployed it — see the
+// README for the walkthrough. Looks like:
+// "https://script.google.com/macros/s/AKfycb.../exec"
+const FORM_ENDPOINT = "https://script.google.com/macros/s/AKfycbyak94TmDkCv5qdO-LFr44Hsr7LgFrWuSKhD7u4p_4IAWzItI9pGvpWzC6UubJiBeiU9g/exec";
 
 // =========================================================
 // Screen 1 -> 2: info form submit / "already submitted"
@@ -39,12 +40,16 @@ infoForm.addEventListener("submit", (e) => {
 
   // Send the form data in the background — we don't wait on it, so a
   // slow network never delays the guest or breaks the autoplay timing.
+  // Posted as FormData directly to the Apps Script Web App, which reads
+  // it via e.parameter and appends a row to the Sheet. The browser may
+  // log a CORS console error trying to *read* the response (Apps Script
+  // doesn't send CORS headers back) — that's harmless and expected; the
+  // row is written server-side regardless, so we just swallow it below.
   if (FORM_ENDPOINT) {
     fetch(FORM_ENDPOINT, {
       method: "POST",
-      headers: { Accept: "application/json" },
       body: new FormData(infoForm),
-    }).catch((err) => console.error("Form submission failed:", err));
+    }).catch(() => {});
   }
 });
 
