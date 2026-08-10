@@ -94,7 +94,7 @@
   text-shadow: 0 1px 4px rgba(0,0,0,0.35);
 }
 #countdown-date-label {
-  color: #fff;
-  font-size: 3.05rem;
+  color: var(--rose);
+  font-size: 2.05rem;
   text-shadow: 0 1px 4px rgba(0,0,0,0.35);
 }
