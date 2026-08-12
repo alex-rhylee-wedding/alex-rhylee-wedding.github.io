@@ -1,7 +1,7 @@
 // =========================================================
 // CONFIG — edit these to personalize the site
 // =========================================================
-const YOUTUBE_VIDEO_ID = "c03SZa1nvb8";
+const YOUTUBE_VIDEO_ID = "QVEgDe_-X8U";
 const COUPLE_NAMES = "Rhylee & Alex";
 
 // Google Apps Script Web App URL that appends each submission as a row
