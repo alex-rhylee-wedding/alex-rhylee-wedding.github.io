@@ -99,3 +99,15 @@
   font-size: 2.55rem;
   text-shadow: 0 1px 4px rgba(0,0,0,0.35);
 }
+.countdown-location {
+  margin-top: -0.4rem;
+  font-family: var(--font-body);
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--sage-deep);
+  text-shadow: 0 1px 4px rgba(0,0,0,0.25);
+  position: relative;
+  z-index: 1;
+}
