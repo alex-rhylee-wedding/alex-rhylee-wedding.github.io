@@ -100,7 +100,7 @@
   text-shadow: 0 1px 4px rgba(0,0,0,0.35);
 }
 .countdown-location {
-  margin-top: -0.4rem;
+  margin: 0.5rem 0 1.8rem;
   font-family: var(--font-body);
   text-transform: uppercase;
   letter-spacing: 0.22em;
