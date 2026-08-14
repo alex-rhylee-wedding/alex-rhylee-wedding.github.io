@@ -289,7 +289,7 @@ body.pre-video .rail-dot[href="#reveal"] {
   right: 0.2rem;
   font-size: 1rem;
   letter-spacing: 0.04em;
-  color: var(--ink-soft);
+  color: var(--ink);
   text-decoration: underline;
   text-underline-offset: 4px;
   opacity: 0;
