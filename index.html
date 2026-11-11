@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rhylee &amp; Alex — Our Wedding</title>
+<meta name="description" content="Rhylee &amp; Alex are getting married. Everything you need for the big day.">
+
+<link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16.png">
+<link rel="icon" type="image/png" sizes="192x192" href="img/favicon-192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+<link rel="shortcut icon" href="img/favicon.ico">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Alex+Brush&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/site.css">
+<link rel="stylesheet" href="css/menu.css">
+</head>
+<body class="site" data-root="">
+
+<main>
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <p class="eyebrow">We're getting married</p>
+    <h1 class="hero-names">Rhylee <span class="amp">&amp;</span> Alex</h1>
+    <span class="rule"></span>
+    <p class="hero-date" id="hero-date">Saturday, August 14, 2027</p>
+    <p class="hero-place">Sabillasville, Maryland</p>
+    <a href="#countdown" class="scroll-cue">Scroll</a>
+  </section>
+
+
+  <!-- COUNTDOWN -->
+  <section class="band band--paper" id="countdown">
+    <div class="wrap reveal-on-scroll">
+      <p class="eyebrow">Counting down to the big day</p>
+      <div class="countdown-row" aria-live="off">
+        <div class="countdown-cell"><b id="cd-days">--</b><span>Days</span></div>
+        <div class="countdown-cell"><b id="cd-hours">--</b><span>Hours</span></div>
+        <div class="countdown-cell"><b id="cd-mins">--</b><span>Minutes</span></div>
+        <div class="countdown-cell"><b id="cd-secs">--</b><span>Seconds</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WELCOME + PHOTO -->
+  <section class="band" id="welcome">
+    <div class="wrap welcome reveal-on-scroll">
+      <div>
+        <p class="eyebrow">Welcome</p>
+        <h2 class="section-title">We're so glad you're here</h2>
+        <p class="section-copy">
+          This is your home base for our wedding day. Everything you need is
+          right here: what to wear, what we're serving, where to stay, and how
+          to find us. We'll keep adding to it as the day gets closer, so check
+          back from time to time.
+        </p>
+        <p class="script-note">We can't wait to celebrate with you</p>
+      </div>
+      <div class="photo-frame">
+        <img src="more/engagement.jpg" alt="Alex proposing to Rhylee outdoors at sunset">
+      </div>
+    </div>
+  </section>
+
+  <!-- DETAILS: one card per menu tab, filled in by js/home.js -->
+  <section class="band band--deep" id="details">
+    <div class="wrap">
+      <div class="reveal-on-scroll">
+        <p class="eyebrow">The details</p>
+        <h2 class="section-title">Everything you'll need</h2>
+      </div>
+      <div class="cards" id="detail-cards"></div>
+    </div>
+  </section>
+
+  <!-- SIGN-OFF -->
+  <section class="band signoff-band" id="signoff">
+    <div class="wrap reveal-on-scroll">
+      <p class="eyebrow">With love</p>
+      <p class="hero-names">Rhylee <span class="amp">&amp;</span> Alex</p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <span class="footer-names">Rhylee &amp; Alex</span>
+  <a href="./">Back to home</a>
+</footer>
+
+<script src="js/menu.js"></script>
+<script src="js/home.js"></script>
+</body>
+</html>
